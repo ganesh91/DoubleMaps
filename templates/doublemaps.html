@@ -1,45 +1,95 @@
 <html>
 <head>
   <style>
-  .box{
-  height: 100px;
-  width: 100px;
-  font-family:Helvetica;
-  background:rgba(0,0,0,0.13);
-  border-style: solid;
-  border-color: #00000;
-  border-radius: 10px;
-}
   </style>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://v4-alpha.getbootstrap.com/examples/cover/cover.css"></link>
+  <link rel="stylesheet" href="{{ url_for('static', filename='btdashboard.css') }}">
+  <script src="https://use.fontawesome.com/b07571aee4.js"></script>
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+   <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
 </head>
 <body>
-<div class="container">
-  <div class="masthead-brand center"><h1>Bloomington Transit Live Dashboard</h1></div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-2">
-      <div class="row">
-        <div class="box">
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+          <a class="navbar-brand" href="#">Bloomington Transit Dashboard</a>
+          <ul class="nav navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Remaind Me!</a>
+            </li>
+          </ul>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-md-12 center-block page-banner-element">
+          <div class="col-md-4 count-outer-box-cyan">
+            # of Busses Running
+            <center><div class="box-count-inner" id="running">
+              100
+            </div></center>
+          </div>
 
+          <div class="col-md-4 count-outer-box-green">
+          # of Running Routes
+          <center><div class="box-count-inner" id="routes">
+            100
+          </div></center>
+          </div>
+
+          <div class="col-md-4 count-outer-box-orange">
+            # of Stops in System
+            <center><div class="box-count-inner" id="stops">
+              100
+            </div></center>
+          </div>
+
+          <div class="col-md-4 count-outer-box-red">
+            # of Stops last minute
+            <center><div class="box-count-inner" id="stopsserved">
+              100
+            </div></center>
+          </div>
+
+          <div class="col-md-4 timer-outer-box-gray">
+            <center><i class="fa fa-refresh fa-spin fa-2x fa-fw"></i></center><br>
+            <progress id="progress" class="progress progress-striped progress-info" value="50" max="100"></progress>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="box-long-info-lime">
+          <span id="temp" class="box-count-inner">0</span> F<br>
+          Image<br>
+          <span class="flex-square-box">Bloomington</span>
+          <span class="flex-square-box" id="weatherevent">Sample Event</span>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-2">
-          sd
-        </div>
+      <div class="col-md-9">
+        <div id="mapid" class="map-container-big"></div>
       </div>
     </div>
-    <div class="col-md-8"></div>
-    <div class="col-md-2"></div>
   </div>
-</div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <script>
+		function init_map() {
+			var map = L.map('mapid');
+			var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+			var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+			var osm = new L.TileLayer(osmUrl, {minZoom: 1, maxZoom: 21, attribution: osmAttrib});
+			map.addLayer(osm);
+
+			return(map);
+		};
+
+    init_map().setView([51.505, -0.09], 13);
+  </script>
 </body>
 </html>

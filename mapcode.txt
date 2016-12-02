@@ -1,0 +1,4 @@
+http://openweathermap.org/img/w/10d.png
+http://api.openweathermap.org/data/2.5/weather?q=Bloomington,in&appid=f485cc4fc090851b32593c34e3468d13
+
+{"coord":{"lon":-86.53,"lat":39.17},"weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04d"}],"base":"stations","main":{"temp":277.38,"pressure":1023,"humidity":60,"temp_min":277.15,"temp_max":278.15},"visibility":16093,"wind":{"speed":3.1,"deg":310},"clouds":{"all":90},"dt":1480704840,"sys":{"type":1,"id":1024,"message":0.1671,"country":"US","sunrise":1480682922,"sunset":1480717400},"id":4254679,"name":"Bloomington","cod":200}

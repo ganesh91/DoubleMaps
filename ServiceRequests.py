@@ -4,6 +4,7 @@ from flask import render_template
 from flask import request
 from flask import redirect,url_for
 import json
+import os
 
 app= Flask("BTMapDviz")
 btmap = DMRequests()
@@ -36,5 +37,12 @@ def getStop(conditioning,value):
 def getRoute(conditioning,value):
     return(json.dumps(btmap.getRoute(conditioning,value)))
 
-app.debug=True
-app.run()
+@app.route("/weather")
+def getWeather():
+    return(json.dumps(btmap.getWeather()))
+
+
+if __name__ == '__main__':
+	port=int(os.environ.get("PORT", 5000))
+	app.debug=True
+	app.run(host='0.0.0.0', port=port)
