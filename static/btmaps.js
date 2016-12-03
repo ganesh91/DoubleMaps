@@ -11,6 +11,18 @@ function load_routes(){
   });
 };
 
+function update_stattiles(){
+  // Query the JSON /api/routes, /api/busses  and /api/stops and count the number of items and display it
+  //for the # of busses tiles and # of route tiles and # of stops
+}
+
+function count_stops_last_min(){
+  //function for counting stops served in last minute
+}
+
+
+function
+
 function animate_progressbar(){
   var currValue=parseInt(document.getElementById("progress").value);
   if (currValue+20 > 100){
