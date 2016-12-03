@@ -96,6 +96,19 @@ body {
   align-content: center;
 }
 
+.box-vlong-info-white{
+  color: white;
+  background-color: #214458;
+  border-color: ##214458;
+  width: 100%;
+  height: 400px;
+  padding: 15px;
+  margin: 15px;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+}
+
 .flex-square-box{
   border-style: solid;
   border-color: white;
@@ -106,4 +119,8 @@ body {
 .map-container-big{
   width: 100%;
   height: 100%;
+}
+
+hr{
+  border-top: 2px solid #FFFFFF;
 }

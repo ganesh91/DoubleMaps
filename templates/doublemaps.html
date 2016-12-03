@@ -27,6 +27,7 @@
         </nav>
     </div>
     <div class="row">
+      <center>
         <div class="col-md-12 center-block page-banner-element">
           <div class="col-md-4 count-outer-box-cyan">
             # of Busses Running
@@ -58,9 +59,10 @@
 
           <div class="col-md-4 timer-outer-box-gray">
             <center><i class="fa fa-refresh fa-spin fa-2x fa-fw"></i></center><br>
-            <progress id="progress" class="progress progress-striped progress-info" value="50" max="100"></progress>
+            <progress id="progress" class="progress progress-striped progress-info" value="0" max="100"></progress>
           </div>
         </div>
+      </center>
     </div>
     <div class="row">
       <div class="col-md-3">
@@ -70,32 +72,20 @@
           <span class="flex-square-box">Bloomington</span>
           <span class="flex-square-box" id="weatherevent">Sample Event</span>
         </div>
+        <div class="box-vlong-info-white">
+          <center><h3> Routes </h3></center>
+          <hr>
+          <div id="routelist"></div>
+        </div>
       </div>
       <div class="col-md-9">
-        <div id="mapid" class="map-container-big"></div>
+        <div id="mapid" class="map-container-big">
+        </div>
       </div>
     </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
-  <script>
-    function load_weather(){
-      var temp=-273;
-      //Sanjana your code here.
-      return(temp);
-    }
-		function init_map() {
-			var map = L.map('mapid');
-			var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-			var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-			var osm = new L.TileLayer(osmUrl, {minZoom: 1, maxZoom: 21, attribution: osmAttrib});
-			map.addLayer(osm);
-
-			return(map);
-		};
-
-    init_map().setView([51.505, -0.09], 13);
-    document.getElementById("temp").innerHTML=load_weather();
-  </script>
+  <script src="{{ url_for('static', filename='btmaps.js') }}"></script>
 </body>
 </html>
