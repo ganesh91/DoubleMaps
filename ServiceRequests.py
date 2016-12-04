@@ -41,6 +41,9 @@ def getRoute(conditioning,value):
 def getWeather():
     return(json.dumps(btmap.getWeather()))
 
+@app.route("/speed")
+def getSpeed():
+    return(json.dumps(btmap.getAllSegments()))
 
 if __name__ == '__main__':
 	port=int(os.environ.get("PORT", 5000))

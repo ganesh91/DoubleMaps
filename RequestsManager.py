@@ -1,4 +1,5 @@
 import requests as rq
+from collections import defaultdict
 
 class DMRequests():
     def __init__(self,routesURL="https://bloomington.doublemap.com/map/v2/routes"
